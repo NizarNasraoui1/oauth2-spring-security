@@ -18,7 +18,7 @@ http://localhost:9000/oauth2/authorize?response_type=code&client_id=api-client&s
 # OIDC flow
 
 oidc flow:
-http://localhost:8080/api/hello
+the client calls: http://localhost:8080/api/hello
 
 => http://localhost:8080/oauth2/authorization/api-client-oidc
 
@@ -38,7 +38,7 @@ http://localhost:9000/login (302)
 
 # OAUTH2 flow:
 
-http://127.0.0.1:8080/api/users
+the client calls: http://127.0.0.1:8080/api/users
 
 => http://localhost:9000/oauth2/authorize?response_type=code&client_id=api-client&scope=api.read&state=GuYvrPqP5M4uKJoJVcaaEGRW2Nj1nb-liNscNZV6mFI%3D&redirect_uri=http://127.0.0.1:8080/authorized
 
