@@ -12,4 +12,9 @@ public class UserController {
         String token=authorizationHeader.substring(7);
         return new String[]{"Shabbir", "Nikhil","Shivam"};
     }
+
+    @GetMapping("/api/hello")
+    public String hello(){
+        return "hello";
+    }
 }

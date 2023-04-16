@@ -19,7 +19,7 @@ public class HelloController {
     @Autowired
     private WebClient webClient;
 
-    @GetMapping("/api/hello")
+    @GetMapping("/api/test")
     public String hello(Principal principal) {
         return "Hello " +principal.getName()+", Welcome to Daily Code Buffer!!";
     }
@@ -34,6 +34,19 @@ public class HelloController {
                 .attributes(ServletOAuth2AuthorizedClientExchangeFilterFunction.oauth2AuthorizedClient(client))
                 .retrieve()
                 .bodyToMono(String[].class)
+                .block();
+    }
+
+    @GetMapping("/api/hello")
+    public String hello(
+            @RegisteredOAuth2AuthorizedClient("api-client-oidc")
+            OAuth2AuthorizedClient client){
+        return this.webClient
+                .get()
+                .uri("http://127.0.0.1:8090/api/hello")
+                .attributes(ServletOAuth2AuthorizedClientExchangeFilterFunction.oauth2AuthorizedClient(client))
+                .retrieve()
+                .bodyToMono(String.class)
                 .block();
     }
 }

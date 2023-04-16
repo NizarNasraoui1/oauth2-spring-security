@@ -20,14 +20,28 @@ public class ResourceServerConfig {
 //        return http.build();
 //    }
 
+//    @Bean
+//    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeRequests()
+//                .mvcMatchers("/api/**").authenticated() // Update to allow all authenticated users
+//                .and()
+//                .oauth2ResourceServer()
+//                .jwt();
+//        return http.build();
+//    }
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .mvcMatchers("/api/**").authenticated() // Update to allow all authenticated users
+                .mvcMatchers("/api/hello").authenticated() // Update to allow all authenticated users
+                .mvcMatchers("api/users").access("hasAuthority('SCOPE_api.read')")
                 .and()
                 .oauth2ResourceServer()
                 .jwt();
         return http.build();
     }
+
+
 }
