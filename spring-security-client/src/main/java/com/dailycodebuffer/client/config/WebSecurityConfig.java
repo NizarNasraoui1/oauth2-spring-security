@@ -35,7 +35,7 @@ public class WebSecurityConfig {
                 .antMatchers("/api/**").authenticated()
                 .and()
                 .oauth2Login(oauth2login ->
-                        oauth2login.loginPage("/oauth2/authorization/api-client-oidc"))
+                        oauth2login.loginPage("/oauth2/authorization/api-client-oidc"))  // default spring security url for OIDC authentication
                 .oauth2Client(Customizer.withDefaults());
 
         return http.build();
