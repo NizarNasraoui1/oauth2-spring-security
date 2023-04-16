@@ -99,4 +99,19 @@ public class AuthorizationServerConfig {
                 .issuer("http://localhost:9000")
                 .build();
     }
+
+    // to activate only to register a new user
+//    @Bean
+//    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .cors()
+//                .and()
+//                .csrf()
+//                .disable()
+//                .authorizeHttpRequests()
+//                .antMatchers("/register").permitAll()
+//                .antMatchers("/api/**").authenticated();
+//
+//        return http.build();
+//    }
 }
