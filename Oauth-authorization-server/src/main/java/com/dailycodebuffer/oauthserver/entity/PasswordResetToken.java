@@ -1,4 +1,4 @@
-package com.dailycodebuffer.client.entity;
+package com.dailycodebuffer.oauthserver.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

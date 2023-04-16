@@ -1,4 +1,4 @@
-package com.dailycodebuffer.client.model;
+package com.dailycodebuffer.oauthserver.entity;
 
 import lombok.Data;
 

@@ -1,11 +1,10 @@
-package com.dailycodebuffer.client.controller;
+package com.dailycodebuffer.oauthserver.controller;
 
-import com.dailycodebuffer.client.entity.User;
-import com.dailycodebuffer.client.entity.VerificationToken;
-import com.dailycodebuffer.client.event.RegistrationCompleteEvent;
-import com.dailycodebuffer.client.model.PasswordModel;
-import com.dailycodebuffer.client.model.UserModel;
-import com.dailycodebuffer.client.service.UserService;
+
+import com.dailycodebuffer.oauthserver.entity.PasswordModel;
+import com.dailycodebuffer.oauthserver.entity.UserModel;
+import com.dailycodebuffer.oauthserver.entity.VerificationToken;
+import com.dailycodebuffer.oauthserver.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 import java.util.UUID;
+import com.dailycodebuffer.oauthserver.entity.User;
 
 @RestController
 @Slf4j
@@ -28,32 +28,29 @@ public class RegistrationController {
     @PostMapping("/register")
     public String registerUser(@RequestBody UserModel userModel, final HttpServletRequest request) {
         User user = userService.registerUser(userModel);
-        publisher.publishEvent(new RegistrationCompleteEvent(
-                user,
-                applicationUrl(request)
-        ));
+
         return "Success";
     }
 
-    @GetMapping("/verifyRegistration")
-    public String verifyRegistration(@RequestParam("token") String token) {
-        String result = userService.validateVerificationToken(token);
-        if(result.equalsIgnoreCase("valid")) {
-            return "User Verified Successfully";
-        }
-        return "Bad User";
-    }
+//    @GetMapping("/verifyRegistration")
+//    public String verifyRegistration(@RequestParam("token") String token) {
+//        String result = userService.validateVerificationToken(token);
+//        if(result.equalsIgnoreCase("valid")) {
+//            return "User Verified Successfully";
+//        }
+//        return "Bad User";
+//    }
 
 
-    @GetMapping("/resendVerifyToken")
-    public String resendVerificationToken(@RequestParam("token") String oldToken,
-                                          HttpServletRequest request) {
-        VerificationToken verificationToken
-                = userService.generateNewVerificationToken(oldToken);
-        User user = verificationToken.getUser();
-        resendVerificationTokenMail(user, applicationUrl(request), verificationToken);
-        return "Verification Link Sent";
-    }
+//    @GetMapping("/resendVerifyToken")
+//    public String resendVerificationToken(@RequestParam("token") String oldToken,
+//                                          HttpServletRequest request) {
+//        VerificationToken verificationToken
+//                = userService.generateNewVerificationToken(oldToken);
+//        User user = verificationToken.getUser();
+//        resendVerificationTokenMail(user, applicationUrl(request), verificationToken);
+//        return "Verification Link Sent";
+//    }
 
     @PostMapping("/resetPassword")
     public String resetPassword(@RequestBody PasswordModel passwordModel, HttpServletRequest request) {

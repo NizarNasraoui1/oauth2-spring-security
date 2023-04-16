@@ -1,6 +1,6 @@
-package com.dailycodebuffer.client.repository;
+package com.dailycodebuffer.oauthserver.repository;
 
-import com.dailycodebuffer.client.entity.VerificationToken;
+import com.dailycodebuffer.oauthserver.entity.VerificationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

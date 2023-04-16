@@ -1,6 +1,6 @@
-package com.dailycodebuffer.client.repository;
+package com.dailycodebuffer.oauthserver.repository;
 
-import com.dailycodebuffer.client.entity.PasswordResetToken;
+import com.dailycodebuffer.oauthserver.entity.PasswordResetToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,19 +1,21 @@
-package com.dailycodebuffer.client.service;
+package com.dailycodebuffer.oauthserver.service;
 
-import com.dailycodebuffer.client.entity.User;
-import com.dailycodebuffer.client.entity.VerificationToken;
-import com.dailycodebuffer.client.model.UserModel;
+
+
+import com.dailycodebuffer.oauthserver.entity.User;
+import com.dailycodebuffer.oauthserver.entity.UserModel;
+import com.dailycodebuffer.oauthserver.entity.VerificationToken;
 
 import java.util.Optional;
 
 public interface UserService {
     User registerUser(UserModel userModel);
 
-    void saveVerificationTokenForUser(String token, User user);
+//    void saveVerificationTokenForUser(String token, User user);
 
-    String validateVerificationToken(String token);
+//    String validateVerificationToken(String token);
 
-    VerificationToken generateNewVerificationToken(String oldToken);
+//    VerificationToken generateNewVerificationToken(String oldToken);
 
     User findUserByEmail(String email);
 
