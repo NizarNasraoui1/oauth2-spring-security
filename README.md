@@ -17,7 +17,6 @@ http://localhost:9000/oauth2/authorize?response_type=code&client_id=api-client&s
 
 # OIDC flow
 
-oidc flow:
 the client calls: http://localhost:8080/api/hello
 
 => http://localhost:8080/oauth2/authorization/api-client-oidc
